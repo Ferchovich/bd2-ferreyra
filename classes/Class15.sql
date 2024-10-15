@@ -38,7 +38,9 @@ group by a.actor_id, a.first_name, a.last_name;
 # 5: The query would be like this its very similar to the 'actor_information' view
 # it's different is that this one shows the category beside the film name, to do this it uses the group_concat
 # and the concat function to do it.
-select a.actor_id, a.first_name, a.last_name, group_concat(distinct concat(c.name, ": ", f.title) separator "; ") from actor a
+
+select a.actor_id, a.first_name, a.last_name, group_concat(distinct concat(c.name, ": ", f.title) separator "; ") 
+from actor a
 inner join film_actor fa using(actor_id)
 inner join film f using(film_id)
 inner join film_category fc on fc.film_id = f.film_id
